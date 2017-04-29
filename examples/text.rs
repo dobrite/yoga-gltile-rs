@@ -4,10 +4,16 @@ extern crate yoga;
 extern crate yoga_gltile;
 extern crate yoga_wrapper;
 
+use glium::DisplayBuild;
 use yoga::{Backend, Builds, Renderable};
 
 fn main() {
-    let mut renderer = gltile::Renderer::new(1536, 1024, 16, "examples/assets/tileset.png");
+    let display = glium::glutin::WindowBuilder::new()
+        .with_dimensions(1536, 1024)
+        .build_glium()
+        .unwrap();
+
+    let mut renderer = gltile::Renderer::new(&display, 16, "examples/assets/tileset.png");
 
     let builder = yoga_gltile::Builder::new();
 
@@ -34,7 +40,9 @@ fn main() {
 
     loop {
         console = be.render(&root, console);
-        renderer.vertex_buffer.blit_console(&console, gltile::ScreenPoint2D::new(0, 0));
+        renderer
+            .vertex_buffer
+            .blit_console(&console, gltile::units::ScreenTile2D::new(0, 0));
         renderer.render();
 
         for ev in renderer.display.poll_events() {
