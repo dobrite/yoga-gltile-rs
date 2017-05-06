@@ -27,7 +27,7 @@ fn main() {
     root.set_height(12.0);
     root.set_flex_direction(yoga::FlexDirection::Row);
     root.set_padding(yoga::Edge::All, 2.0);
-    root.set_background_color(Some(yoga::style::BackgroundColor::Color(*gltile::colors::CYAN)));
+    root.set_background_color(Some(yoga::style::BackgroundColor::Color(*gltile::colors::CYAN)),);
 
     root.insert_child(&text, 0);
     root.insert_child(&text2, 0);

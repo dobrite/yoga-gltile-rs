@@ -12,7 +12,7 @@ impl Renderer {
     fn walk(
         &mut self,
         node: &yoga::Renderable<gltile::colors::Rgb>,
-        mut console: gltile::Console
+        mut console: gltile::Console,
     ) -> gltile::Console {
         let width = node.get_layout_width() as i32;
         let height = node.get_layout_height() as i32;
@@ -32,7 +32,8 @@ impl Renderer {
 
         if let Some(text) = node.get_text() {
             for (pix, offset) in gltile::font::Str::from(text).iter() {
-                console.with_pt(gltile::ScreenPoint2D::new(left + offset.x, top))
+                console
+                    .with_pt(gltile::ScreenPoint2D::new(left + offset.x, top))
                     .with_fg(color)
                     .with_bg(background_color)
                     .set_pix(pix);
@@ -40,7 +41,8 @@ impl Renderer {
         } else {
             for y in top..(top + height) {
                 for x in left..(left + width) {
-                    console.with_pt(gltile::ScreenPoint2D::new(x as i32, y as i32))
+                    console
+                        .with_pt(gltile::ScreenPoint2D::new(x as i32, y as i32))
                         .with_fg(color)
                         .with_bg(background_color)
                         .set_pix(gltile::Pix::Empty);
