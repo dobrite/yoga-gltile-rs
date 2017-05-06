@@ -2,7 +2,6 @@ extern crate glium;
 extern crate gltile;
 extern crate yoga;
 extern crate yoga_gltile;
-extern crate yoga_wrapper;
 
 use glium::DisplayBuild;
 use yoga::{Backend, Builds, Renderable};
@@ -26,8 +25,8 @@ fn main() {
     let mut root = builder.view();
     root.set_width(50.0);
     root.set_height(12.0);
-    root.set_flex_direction(yoga_wrapper::FlexDirection::Row);
-    root.set_padding(yoga_wrapper::Edge::All, 2.0);
+    root.set_flex_direction(yoga::FlexDirection::Row);
+    root.set_padding(yoga::Edge::All, 2.0);
     root.set_background_color(Some(yoga::style::BackgroundColor::Color(*gltile::colors::CYAN)));
 
     root.insert_child(&text, 0);

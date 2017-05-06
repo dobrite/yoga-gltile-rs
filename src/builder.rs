@@ -1,7 +1,6 @@
 use gltile;
 use measurer;
 use yoga;
-use yoga_wrapper;
 
 pub struct Builder {
     measurer: measurer::Measurer,
@@ -14,11 +13,8 @@ impl Builder {
 }
 
 impl<'meas> yoga::Builds<'meas, gltile::colors::Rgb> for Builder {
-    fn create_context<'text>(
-        &'meas self,
-        text: &'text str
-    ) -> Box<yoga_wrapper::Context<'text, 'meas>> {
-        Box::new(yoga_wrapper::Context::new(text, &self.measurer))
+    fn create_context<'text>(&'meas self, text: &'text str) -> Box<yoga::Context<'text, 'meas>> {
+        Box::new(yoga::Context::new(text, &self.measurer))
     }
 
     fn view<'r>(&self) -> yoga::View<'r, gltile::colors::Rgb> {

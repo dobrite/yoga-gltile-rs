@@ -1,7 +1,6 @@
 extern crate glium;
 extern crate gltile;
 extern crate yoga;
-extern crate yoga_wrapper;
 
 mod backend;
 mod builder;
