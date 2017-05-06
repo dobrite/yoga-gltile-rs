@@ -33,7 +33,7 @@ impl Renderer {
         if let Some(text) = node.get_text() {
             for (pix, offset) in gltile::font::Str::from(text).iter() {
                 console
-                    .with_pt(gltile::ScreenPoint2D::new(left + offset.x, top))
+                    .with_loc(gltile::units::ScreenTile2D::new(left + offset.x, top))
                     .with_fg(color)
                     .with_bg(background_color)
                     .set_pix(pix);
@@ -42,7 +42,7 @@ impl Renderer {
             for y in top..(top + height) {
                 for x in left..(left + width) {
                     console
-                        .with_pt(gltile::ScreenPoint2D::new(x as i32, y as i32))
+                        .with_loc(gltile::units::ScreenTile2D::new(x as i32, y as i32))
                         .with_fg(color)
                         .with_bg(background_color)
                         .set_pix(gltile::Pix::Empty);
