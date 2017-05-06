@@ -1,4 +1,4 @@
-A [gltile-rs](https://github.com/dobrite/gltile-rs) renderer using [Yoga](https://github.com/facebook/yoga) and [yoga-wrapper-rs](https://github.com/dobrite/yoga-wrapper-rs)
+A [gltile-rs](https://github.com/dobrite/gltile-rs) renderer using [Yoga](https://github.com/facebook/yoga)
 
 ```bash
 $ cargo run --example c
