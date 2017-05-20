@@ -1,5 +1,6 @@
 extern crate glium;
 extern crate gltile;
+extern crate pixset;
 extern crate yoga;
 
 mod backend;

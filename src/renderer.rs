@@ -1,5 +1,6 @@
 use Builder;
 use gltile;
+use pixset;
 use yoga;
 
 pub struct Renderer {}
@@ -31,9 +32,9 @@ impl Renderer {
         };
 
         if let Some(text) = node.get_text() {
-            for (pix, offset) in gltile::font::Str::from(text).iter() {
+            for (pix, offset) in pixset::Str::from(text).iter() {
                 console
-                    .with_loc(gltile::units::ScreenTile2D::new(left + offset.x, top))
+                    .with_loc(gltile::units::ScreenTile2D::new(left + offset.0, top))
                     .with_fg(color)
                     .with_bg(background_color)
                     .set_pix(pix);
@@ -45,7 +46,7 @@ impl Renderer {
                         .with_loc(gltile::units::ScreenTile2D::new(x as i32, y as i32))
                         .with_fg(color)
                         .with_bg(background_color)
-                        .set_pix(gltile::Pix::Empty);
+                        .set_pix(pixset::Pix::Empty);
                 }
             }
         }

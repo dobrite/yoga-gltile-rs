@@ -2,6 +2,7 @@ extern crate glium;
 extern crate gltile;
 extern crate yoga;
 extern crate yoga_gltile;
+extern crate pixset;
 
 use glium::DisplayBuild;
 use yoga::{Backend, Builds, Renderable};
@@ -12,7 +13,8 @@ fn main() {
         .build_glium()
         .unwrap();
 
-    let mut renderer = gltile::Renderer::new(&display, 16, "examples/assets/tileset.png");
+    let pixset = pixset::Pixset::new(100, 16);
+    let mut renderer = gltile::Renderer::new(&display, pixset);
 
     let builder = yoga_gltile::Builder::new();
 
@@ -46,9 +48,7 @@ fn main() {
 
     loop {
         console = be.render(&root, console);
-        renderer
-            .vertex_buffer
-            .blit_console(&console, gltile::units::ScreenTile2D::new(0, 0));
+        renderer.blit_console(gltile::units::ScreenTile2D::new(0, 0), &console);
         renderer.render();
 
         for ev in renderer.display.poll_events() {
